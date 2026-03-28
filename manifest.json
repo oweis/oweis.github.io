@@ -1,0 +1,15 @@
+{
+  "name": "Oweis Yahya — Senior Software Engineer",
+  "short_name": "Oweis",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1326",
+  "theme_color": "#0b1326",
+  "icons": [
+    {
+      "src": "/assets/images/og-image.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

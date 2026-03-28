@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /assets/Oweis_Yahya_CV.pdf
+
+Sitemap: https://oweis.github.io/sitemap.xml
