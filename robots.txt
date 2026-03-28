@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /assets/Oweis_Yahya_CV.pdf
 
-Sitemap: https://oweis.github.io/sitemap.xml
+Sitemap: https://oweis.me/sitemap.xml
