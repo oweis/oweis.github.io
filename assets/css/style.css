@@ -183,3 +183,251 @@ a:focus-visible,button:focus-visible{outline:2px solid #00e5ff;outline-offset:3p
   box-shadow:0 4px 16px -8px rgba(0,229,255,.55)}
 .header-cta:hover{filter:brightness(1.08);box-shadow:0 6px 20px -8px rgba(0,229,255,.7)}
 .header-cta:active{transform:translateY(1px) scale(.985)}
+
+/* ════════════════════════════════════════════════════════════
+   THEME SYSTEM — B (warm dark amber) default · A (editorial light) toggle
+   ════════════════════════════════════════════════════════════ */
+
+:root[data-theme="dark"]{
+  --c-bg:#13110e;          --c-bg-low:#0e0d0a;      --c-bg-2:#1c1a14;        --c-bg-3:#252118;
+  --c-ink:#ebe5d6;         --c-ink-soft:#c8c1ae;    --c-ink-muted:#8b8470;
+  --c-accent:#e7a652;      --c-accent-bright:#f3b969;  --c-accent-on:#13110e;
+  --c-rule:#4a4439;        --c-glow:rgba(231,166,82,.35);
+  color-scheme:dark
+}
+:root[data-theme="light"]{
+  --c-bg:#f6f3ec;          --c-bg-low:#fbf8f1;      --c-bg-2:#ede8db;        --c-bg-3:#e2dccc;
+  --c-ink:#15140f;         --c-ink-soft:#3a3528;    --c-ink-muted:#6b6552;
+  --c-accent:#a3431f;      --c-accent-bright:#b6532a;  --c-accent-on:#fbf6e9;
+  --c-rule:#bdb6a4;        --c-glow:rgba(163,67,31,.25);
+  color-scheme:light
+}
+
+/* base canvas */
+html,body{background-color:var(--c-bg);color:var(--c-ink);
+  transition:background-color .35s ease,color .35s ease}
+
+/* ── Tailwind utility overrides — surfaces ── */
+.bg-surface{background-color:var(--c-bg)!important}
+.bg-surface-container-lowest{background-color:var(--c-bg-low)!important}
+.bg-surface-container-low{background-color:var(--c-bg-2)!important}
+.bg-surface-container{background-color:var(--c-bg-2)!important}
+.bg-surface-container-high{background-color:var(--c-bg-3)!important}
+.bg-primary\/5{background-color:color-mix(in oklab,var(--c-accent) 5%,transparent)!important}
+.bg-primary\/10{background-color:color-mix(in oklab,var(--c-accent) 10%,transparent)!important}
+.bg-\[\#0b1326\]{background-color:var(--c-bg)!important}
+
+/* ── gradients ── */
+.from-primary{--tw-gradient-from:var(--c-accent) var(--tw-gradient-from-position);
+  --tw-gradient-to:color-mix(in oklab,var(--c-accent) 0%,transparent) var(--tw-gradient-to-position);
+  --tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}
+.from-primary\/5{--tw-gradient-from:color-mix(in oklab,var(--c-accent) 5%,transparent) var(--tw-gradient-from-position);
+  --tw-gradient-to:color-mix(in oklab,var(--c-accent) 0%,transparent) var(--tw-gradient-to-position);
+  --tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}
+.to-primary-container{--tw-gradient-to:var(--c-accent-bright) var(--tw-gradient-to-position)}
+
+/* ── text ── */
+.text-on-surface{color:var(--c-ink)!important}
+.text-on-surface\/70{color:color-mix(in oklab,var(--c-ink) 70%,transparent)!important}
+.text-on-surface-variant{color:var(--c-ink-soft)!important}
+.text-on-secondary-container{color:var(--c-ink-muted)!important}
+.text-primary{color:var(--c-accent)!important}
+.text-primary-container{color:var(--c-accent-bright)!important}
+.text-primary\/50{color:color-mix(in oklab,var(--c-accent) 50%,transparent)!important}
+.text-on-primary{color:var(--c-accent-on)!important}
+.text-outline-variant{color:var(--c-rule)!important}
+.text-outline-variant\/50{color:color-mix(in oklab,var(--c-rule) 50%,transparent)!important}
+.text-outline-variant\/5{color:color-mix(in oklab,var(--c-rule) 5%,transparent)!important}
+.text-slate-300{color:var(--c-ink-soft)!important}
+.text-slate-500{color:var(--c-ink-muted)!important}
+
+/* ── borders ── */
+.border-primary{border-color:var(--c-accent)!important}
+.border-primary-container{border-color:var(--c-accent-bright)!important}
+.border-primary\/20{border-color:color-mix(in oklab,var(--c-accent) 20%,transparent)!important}
+.border-primary\/50{border-color:color-mix(in oklab,var(--c-accent) 50%,transparent)!important}
+.border-outline-variant\/5{border-color:color-mix(in oklab,var(--c-rule) 18%,transparent)!important}
+.border-outline-variant\/10,.border-\[\#3b494c\]\/10{border-color:color-mix(in oklab,var(--c-rule) 28%,transparent)!important}
+.border-outline-variant\/15{border-color:color-mix(in oklab,var(--c-rule) 32%,transparent)!important}
+.border-outline-variant\/20{border-color:color-mix(in oklab,var(--c-rule) 38%,transparent)!important}
+.border-outline-variant\/30{border-color:color-mix(in oklab,var(--c-rule) 48%,transparent)!important}
+.border-outline-variant\/40{border-color:color-mix(in oklab,var(--c-rule) 60%,transparent)!important}
+
+/* ── fills ── */
+.fill-primary{fill:var(--c-accent)!important}
+
+/* ── shadows — strip cyan tint, swap for accent glow ── */
+.shadow-\[0_0_20px_rgba\(0\2c 229\2c 255\2c 0\.15\)\]{
+  --tw-shadow:0 0 20px var(--c-glow);
+  box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
+.shadow-\[0_0_20px_rgba\(0\2c 229\2c 255\2c 0\.2\)\]{
+  --tw-shadow:0 0 20px var(--c-glow);
+  box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
+.shadow-\[0_20px_40px_rgba\(0\2c 218\2c 243\2c 0\.08\)\]{
+  --tw-shadow:0 20px 40px color-mix(in oklab,var(--c-accent) 10%,transparent);
+  box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
+.drop-shadow-\[0_0_20px_rgba\(195\2c 245\2c 255\2c 0\.3\)\]{
+  --tw-drop-shadow:drop-shadow(0 0 16px var(--c-glow));
+  filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}
+
+/* ── selection / hover / focus ── */
+.selection\:bg-primary\/30 ::-moz-selection,.selection\:bg-primary\/30 ::selection,
+.selection\:bg-primary\/30::-moz-selection,.selection\:bg-primary\/30::selection{
+  background-color:color-mix(in oklab,var(--c-accent) 30%,transparent)!important}
+.selection\:text-primary ::-moz-selection,.selection\:text-primary ::selection,
+.selection\:text-primary::-moz-selection,.selection\:text-primary::selection{color:var(--c-accent)!important}
+
+.hover\:border-primary\/20:hover{border-color:color-mix(in oklab,var(--c-accent) 20%,transparent)!important}
+.hover\:border-primary\/50:hover{border-color:color-mix(in oklab,var(--c-accent) 50%,transparent)!important}
+.hover\:bg-surface-container:hover{background-color:var(--c-bg-2)!important}
+.hover\:bg-surface-container-high:hover{background-color:var(--c-bg-3)!important}
+.hover\:text-primary:hover{color:var(--c-accent)!important}
+
+.focus\:bg-primary:focus{background-color:var(--c-accent)!important}
+.focus\:text-on-primary:focus{color:var(--c-accent-on)!important}
+
+.group:hover .group-hover\:bg-primary{background-color:var(--c-accent)!important}
+.group:hover .group-hover\:fill-on-primary{fill:var(--c-accent-on)!important}
+.group:hover .group-hover\:text-primary{color:var(--c-accent)!important}
+.group:hover .group-hover\:text-on-surface{color:var(--c-ink)!important}
+.group:hover .group-hover\:border-primary\/60{border-color:color-mix(in oklab,var(--c-accent) 60%,transparent)!important}
+
+/* ── focus ring ── */
+a:focus-visible,button:focus-visible{outline-color:var(--c-accent)!important}
+
+/* ── ambient bg gradient + grid (replaces old cyan-tinted version) ── */
+body.grid-bg{background-image:
+  radial-gradient(1200px 600px at 80% -10%,color-mix(in oklab,var(--c-accent) 8%,transparent),transparent 60%),
+  radial-gradient(900px 500px at -10% 110%,color-mix(in oklab,var(--c-accent) 5%,transparent),transparent 60%),
+  radial-gradient(circle at 2px 2px,color-mix(in oklab,var(--c-rule) 35%,transparent) 1px,transparent 0)!important;
+  background-size:auto,auto,40px 40px;background-attachment:fixed,fixed,local}
+
+/* ── glass nav ── */
+.glass-nav{background:color-mix(in oklab,var(--c-bg-2) 70%,transparent)!important;
+  -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+
+/* ── re-style custom components for theme ── */
+.font-display-italic{color:var(--c-ink-soft)}
+
+.site-header-brand{color:var(--c-ink)}
+.nav-link{color:var(--c-ink-muted)!important}
+.nav-link:hover{color:var(--c-ink)!important}
+.nav-link.is-active{color:var(--c-accent)!important}
+
+.header-chip{border-color:color-mix(in oklab,var(--c-rule) 70%,transparent);
+  color:var(--c-ink-soft);background:color-mix(in oklab,var(--c-bg-2) 60%,transparent)}
+.header-chip:hover{border-color:var(--c-accent);color:var(--c-accent);
+  background:color-mix(in oklab,var(--c-accent) 5%,transparent)}
+
+.header-cta{background:var(--c-accent);color:var(--c-accent-on);
+  box-shadow:0 4px 16px -8px var(--c-glow)}
+.header-cta:hover{box-shadow:0 6px 20px -8px var(--c-glow)}
+
+.btn-solid{background:var(--c-accent);color:var(--c-accent-on);
+  box-shadow:0 6px 22px -10px var(--c-glow)}
+.btn-solid:hover{filter:brightness(1.06);box-shadow:0 10px 28px -10px var(--c-glow)}
+
+.btn-ghost{border-color:color-mix(in oklab,var(--c-accent) 28%,transparent);color:var(--c-accent)}
+.btn-ghost:hover{border-color:var(--c-accent);
+  background:color-mix(in oklab,var(--c-accent) 6%,transparent)}
+
+.project-num{color:var(--c-ink-muted)}
+
+.status-pill{border-color:color-mix(in oklab,var(--c-accent) 30%,transparent);
+  background:color-mix(in oklab,var(--c-accent) 5%,transparent);color:var(--c-ink-soft)}
+.status-pill::before{background:var(--c-accent)}
+@keyframes pulse-dot{
+  0%{box-shadow:0 0 0 0 color-mix(in oklab,var(--c-accent) 55%,transparent)}
+  70%{box-shadow:0 0 0 8px transparent}
+  100%{box-shadow:0 0 0 0 transparent}
+}
+
+/* skill deck */
+.skill-deck{border-top-color:color-mix(in oklab,var(--c-rule) 50%,transparent)}
+.skill-card{border-bottom-color:color-mix(in oklab,var(--c-rule) 40%,transparent)}
+.skill-card:hover{background-color:color-mix(in oklab,var(--c-accent) 3%,transparent);
+  border-bottom-color:color-mix(in oklab,var(--c-accent) 30%,transparent)}
+.skill-card:hover .skill-card__num{color:var(--c-accent)}
+.skill-card__num{color:var(--c-ink-muted)}
+.skill-card__title{color:var(--c-ink)}
+.skill-card__meta{color:var(--c-ink-muted)}
+.skill-card__meta strong{color:var(--c-accent)}
+.skill-card__desc{color:var(--c-ink-soft)}
+.skill-card__pills li{border-color:color-mix(in oklab,var(--c-rule) 60%,transparent);
+  color:var(--c-ink-soft);background:color-mix(in oklab,var(--c-accent) 2%,transparent)}
+.skill-card:hover .skill-card__pills li{border-color:color-mix(in oklab,var(--c-accent) 25%,transparent)}
+.skill-card__pills li:hover{border-color:var(--c-accent);color:var(--c-ink);
+  background:color-mix(in oklab,var(--c-accent) 8%,transparent)}
+
+/* credentials */
+.cred-card{border-color:color-mix(in oklab,var(--c-rule) 45%,transparent);
+  background:linear-gradient(180deg,color-mix(in oklab,var(--c-bg-2) 70%,transparent),color-mix(in oklab,var(--c-bg-2) 35%,transparent))}
+.cred-card:hover{border-color:var(--c-accent);
+  background:linear-gradient(180deg,color-mix(in oklab,var(--c-bg-2) 90%,transparent),color-mix(in oklab,var(--c-bg-2) 55%,transparent))}
+.cred-card__title{color:var(--c-ink)}
+.cred-card__meta{color:var(--c-ink-muted)}
+.cred-card__meta .sep{color:color-mix(in oklab,var(--c-ink-muted) 40%,transparent)}
+.cred-card__verify{color:var(--c-ink-muted)}
+.cred-card:hover .cred-card__verify{color:var(--c-accent)}
+
+/* ════════════════════════════════════════════════════════════
+   SOLAR SYSTEM — simplified sun + bug-fixed orbit
+   ════════════════════════════════════════════════════════════ */
+.solar-system{position:relative;aspect-ratio:1}
+/* arbitrary-width utility for the solar container (not in compiled tailwind) */
+@media (min-width:1024px){.lg\:w-\[520px\]{width:520px}}
+.solar-rings{position:absolute;inset:0;width:100%;height:100%}
+
+.solar-caption{position:absolute;top:.25rem;right:0;font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:.65rem;letter-spacing:.14em;color:var(--c-ink-muted);
+  display:flex;align-items:center;gap:.45rem;opacity:.85;pointer-events:none}
+.solar-caption .dot{display:inline-block;width:.3rem;height:.3rem;border-radius:50%;background:var(--c-accent)}
+
+/* center — same nested-O brand mark as header & favicon, just larger + glowing */
+.solar__sun{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:72px;height:72px;z-index:3;color:var(--c-accent);
+  filter:drop-shadow(0 0 14px var(--c-glow)) drop-shadow(0 0 32px var(--c-glow));
+  animation:sun-pulse 5s ease-in-out infinite}
+.solar__sun svg{display:block;width:100%;height:100%}
+@keyframes sun-pulse{
+  0%,100%{filter:drop-shadow(0 0 14px var(--c-glow)) drop-shadow(0 0 32px var(--c-glow))}
+  50%   {filter:drop-shadow(0 0 22px var(--c-glow)) drop-shadow(0 0 56px var(--c-glow))}
+}
+
+/* orbit moons — radius offset and counter-spin live on SEPARATE elements
+   so the animation can never overwrite the position transform */
+.solar-orbits{position:absolute;inset:0}
+.solar-ring{position:absolute;inset:0;animation:solar-spin var(--dur) linear infinite}
+.solar-ring--rev{animation-direction:reverse}
+@keyframes solar-spin{to{transform:rotate(360deg)}}
+.solar-moon{position:absolute;top:50%;left:50%;width:0;height:0}
+.solar-moon__counter{position:absolute;width:2.4rem;height:2.4rem;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;
+  animation:solar-counterspin var(--dur) linear infinite}
+.solar-ring--rev .solar-moon__counter{animation-name:solar-counterspin-rev}
+@keyframes solar-counterspin{
+  from{transform:translate(-50%,-50%) rotate(0)}
+  to  {transform:translate(-50%,-50%) rotate(-360deg)}
+}
+@keyframes solar-counterspin-rev{
+  from{transform:translate(-50%,-50%) rotate(0)}
+  to  {transform:translate(-50%,-50%) rotate(360deg)}
+}
+.solar-moon__counter i{font-size:1.7rem}
+.solar-moon__counter svg{width:1.6rem;height:1.6rem}
+
+/* ════════════════════════════════════════════════════════════
+   THEME TOGGLE BUTTON
+   ════════════════════════════════════════════════════════════ */
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:36px;border-radius:9999px;
+  border:1px solid color-mix(in oklab,var(--c-rule) 70%,transparent);
+  background:color-mix(in oklab,var(--c-bg-2) 60%,transparent);color:var(--c-ink-soft);
+  cursor:pointer;flex-shrink:0;
+  transition:border-color 200ms ease,color 200ms ease,background-color 200ms ease}
+.theme-toggle:hover{border-color:var(--c-accent);color:var(--c-accent);
+  background:color-mix(in oklab,var(--c-accent) 5%,transparent)}
+.theme-toggle svg{width:16px;height:16px}
+
+/* Brand mark — inline SVG, theme-aware via currentColor */
+.brand-mark{color:var(--c-accent);display:block;flex-shrink:0}

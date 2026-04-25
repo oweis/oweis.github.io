@@ -3,6 +3,19 @@
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('oweis-theme');
+    if(!t){
+      t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  }catch(e){
+    document.documentElement.setAttribute('data-theme','dark');
+  }
+})();
+</script>
 <meta name="description" content="Oweis Yahya — Senior Software Engineer. I architect and ship products end-to-end."/>
 <link rel="canonical" href="https://oweis.me/"/>
 <meta property="og:title" content="Oweis Yahya — Senior Software Engineer"/>
@@ -14,10 +27,10 @@
 <meta name="twitter:title" content="Oweis Yahya — Senior Software Engineer"/>
 <meta name="twitter:description" content="I architect and ship products end-to-end."/>
 <meta name="twitter:image" content="https://oweis.me/assets/images/og-image.png"/>
-<meta name="theme-color" content="#0b1326"/>
-<link rel="icon" type="image/svg+xml" href="/assets/logo/nested-o.svg"/>
-<link rel="alternate icon" type="image/png" sizes="192x192" href="/assets/logo/nested-o.svg"/>
-<link rel="apple-touch-icon" href="/assets/logo/nested-o.svg"/>
+<meta name="theme-color" content="#13110e" media="(prefers-color-scheme: dark)"/>
+<meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)"/>
+<link rel="icon" type="image/svg+xml" href="/assets/logo/nested-o.svg?v=2"/>
+<link rel="apple-touch-icon" href="/assets/logo/nested-o.svg?v=2"/>
 <link rel="manifest" href="/manifest.json"/>
 <script type="application/ld+json">
 {
@@ -65,7 +78,10 @@
 <header class="fixed top-0 w-full z-50 glass-nav border-b border-outline-variant/15">
 <div class="flex justify-between items-center px-6 sm:px-8 h-16 max-w-screen-2xl mx-auto">
 <a href="#" class="flex items-center gap-2.5" aria-label="Oweis Yahya — home">
-    <img src="assets/logo/nested-o.svg" alt="" aria-hidden="true" class="w-7 h-7" width="28" height="28"/>
+    <svg class="brand-mark" viewBox="0 0 100 100" width="28" height="28" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="currentColor" opacity=".08"/>
+        <circle cx="50" cy="50" r="24" fill="none" stroke="currentColor" stroke-width="6"/>
+    </svg>
     <span class="site-header-brand">Oweis Yahya</span>
 </a>
 <nav class="hidden md:flex gap-7 items-center" aria-label="Primary">
@@ -74,6 +90,10 @@
 <a class="nav-link" href="#contact">Contact</a>
 </nav>
 <div class="flex items-center gap-2 sm:gap-3">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" type="button">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
     <a href="assets/Oweis_Yahya_CV.pdf" class="header-chip" download="Oweis_Yahya_CV.pdf" aria-label="Download CV (PDF)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m6 9 6 6 6-6"/><path d="M5 21h14"/></svg>
         <span class="hidden sm:inline">Download CV</span>
@@ -118,19 +138,17 @@
                     </a>
 </div>
 </div>
-<div class="relative flex items-center justify-center mt-8 lg:mt-0 lg:absolute lg:inset-auto lg:-right-20 lg:top-1/2 lg:-translate-y-1/2 opacity-75 lg:pointer-events-none">
-<div class="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[560px] lg:h-[560px] scale-[0.54] sm:scale-[0.71] lg:scale-100">
-<!-- Orbit rings -->
-<svg class="absolute inset-0 w-full h-full" viewBox="0 0 560 560">
-<circle cx="280" cy="280" r="100" fill="none" stroke="#3b494c" stroke-width="0.5" opacity="0.4"/>
-<circle cx="280" cy="280" r="170" fill="none" stroke="#3b494c" stroke-width="0.5" opacity="0.3"/>
-<circle cx="280" cy="280" r="240" fill="none" stroke="#3b494c" stroke-width="0.5" opacity="0.2"/>
+<div class="relative flex items-center justify-center mt-8 lg:mt-0 lg:absolute lg:inset-auto lg:-right-20 lg:top-1/2 lg:-translate-y-1/2 opacity-90 lg:pointer-events-none">
+<div class="solar-system w-[300px] sm:w-[400px] lg:w-[520px]">
+<span class="solar-caption" aria-hidden="true"><span class="dot"></span>my stack · in orbit</span>
+<svg id="orbit-svg" class="solar-rings" viewBox="0 0 520 520" aria-hidden="true"></svg>
+<div class="solar__sun" aria-hidden="true">
+<svg viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="46" fill="currentColor" opacity=".08"/>
+<circle cx="50" cy="50" r="24" fill="none" stroke="currentColor" stroke-width="6"/>
 </svg>
-<!-- Center: core -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 flex items-center justify-center">
-<img src="assets/logo/nested-o.svg" alt="" class="w-14 h-14 drop-shadow-[0_0_20px_rgba(195,245,255,0.3)]" width="56" height="56" aria-hidden="true"/>
 </div>
-<div id="orbit-container"></div>
+<div id="orbit-container" class="solar-orbits"></div>
 </div>
 </div>
 <div class="absolute inset-0 bg-primary/5 blur-[80px] rounded-full pointer-events-none"></div>
@@ -296,7 +314,10 @@ LinkedIn
 <footer class="bg-[#0b1326] w-full py-12 px-8 border-t border-[#3b494c]/10">
 <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
 <div class="flex items-center gap-2">
-    <img src="assets/logo/nested-o.svg" alt="Oweis Yahya" class="w-5 h-5" width="20" height="20"/>
+    <svg class="brand-mark" viewBox="0 0 100 100" width="20" height="20" aria-label="Oweis Yahya">
+        <circle cx="50" cy="50" r="46" fill="currentColor" opacity=".08"/>
+        <circle cx="50" cy="50" r="24" fill="none" stroke="currentColor" stroke-width="6"/>
+    </svg>
     <span class="font-label font-bold tracking-widest text-primary text-xs uppercase">OWEIS</span>
 </div>
 <div class="font-label text-[10px] tracking-tighter uppercase text-slate-500">
@@ -330,21 +351,44 @@ LinkedIn
         link.addEventListener('click', () => setMenuOpen(false));
     });
 
-    // Orbit system — data-driven
-    // Custom SVG paths for icons missing from Simple Icons CDN
+    // ════════════════════════════════════════════════════
+    // Theme toggle — B dark default, A light toggle
+    // ════════════════════════════════════════════════════
+    const themeBtn = document.getElementById('theme-toggle');
+    function applyTheme(t){
+        document.documentElement.setAttribute('data-theme', t);
+        try{ localStorage.setItem('oweis-theme', t); }catch(e){}
+        if(themeBtn){
+            themeBtn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+            const moon = themeBtn.querySelector('.icon-moon');
+            const sun = themeBtn.querySelector('.icon-sun');
+            if(moon) moon.style.display = t === 'dark' ? 'block' : 'none';
+            if(sun)  sun.style.display  = t === 'dark' ? 'none'  : 'block';
+        }
+        if(typeof paintRings === 'function') paintRings();
+    }
+    if(themeBtn){
+        themeBtn.addEventListener('click', () => {
+            applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        });
+    }
+
+    // ════════════════════════════════════════════════════
+    // Solar system — data-driven, bug-fixed orbit
+    // ════════════════════════════════════════════════════
     const customSVG = {
         java: '<path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149m-.575-2.627s-1.028.761.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.131-7.942-1.218m4.84-4.458c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0 0-8.216 2.051-4.292 6.573m7.56 10.984s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.75-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82M9.292 13.21s-4.362 1.036-1.544 1.412c1.189.159 3.561.123 5.77-.062 1.806-.152 3.618-.477 3.618-.477s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.568 2.082-1.006 3.776-.892 3.776-.892m7.824 4.374c4.503-2.34 2.421-4.589.968-4.285-.356.074-.515.138-.515.138s.132-.207.385-.297c2.875-1.011 5.086 2.981-.929 4.562 0 0 .07-.062.091-.118M14.401 0s2.494 2.494-2.365 6.33c-3.896 3.077-.889 4.832 0 6.836-2.274-2.053-3.943-3.858-2.824-5.539 1.644-2.469 6.197-3.665 5.189-7.627M9.734 23.924c4.322.277 10.959-.154 11.116-2.198 0 0-.302.775-3.572 1.391-3.688.694-8.239.613-10.937.168 0 0 .553.457 3.393.639"/>',
         aem: '<path d="M14.204 2.386L2.834 21.319h6.456l1.98-3.298h5.46l1.98 3.298h6.456L13.796 2.386h.408zM14 10.932l2.274 3.791h-4.548L14 10.932z"/>',
     };
 
     const orbits = [
-        { radius: 100, speed: 30, reverse: false, icons: [
+        { radius: 95,  dur: 30, reverse: false, icons: [
             { slug: 'springboot', color: '#6DB33F' },
             { slug: 'angular', color: '#DD0031' },
-            { slug: 'nextdotjs', color: '#FFFFFF' },
+            { slug: 'nextdotjs' },
             { slug: 'postgresql', color: '#4169E1' },
         ]},
-        { radius: 170, speed: 45, reverse: true, icons: [
+        { radius: 160, dur: 45, reverse: true, icons: [
             { slug: 'amazonwebservices', color: '#FF9900' },
             { slug: 'docker', color: '#2496ED' },
             { slug: 'digitalocean', color: '#0080FF' },
@@ -352,60 +396,96 @@ LinkedIn
             { slug: 'jenkins', color: '#D24939' },
             { custom: 'java', color: '#F89820' },
         ]},
-        { radius: 240, speed: 60, reverse: false, icons: [
-            { slug: 'apachekafka', color: '#FFFFFF' },
+        { radius: 225, dur: 60, reverse: false, icons: [
+            { slug: 'apachekafka' },
             { slug: 'redis', color: '#FF4438' },
             { slug: 'react', color: '#61DAFB' },
             { slug: 'git', color: '#F05032' },
-            { slug: 'github', color: '#FFFFFF' },
+            { slug: 'github' },
             { slug: 'gitlab', color: '#FC6D26' },
             { slug: 'sonarqube', color: '#4E9BCD' },
             { custom: 'aem', color: '#FA0F00' },
         ]},
     ];
 
-    function buildOrbits() {
-        const container = document.getElementById('orbit-container');
-        orbits.forEach(orbit => {
+    // sparse, deterministic star field
+    const STARS = [];
+    let _s = 42; const _rnd = () => { _s = (_s*9301+49297) % 233280; return _s/233280; };
+    for(let i = 0; i < 22; i++) STARS.push({ x: _rnd()*520, y: _rnd()*520, r: 0.3+_rnd()*0.9, o: 0.2+_rnd()*0.5 });
+
+    function paintRings(){
+        const svg = document.getElementById('orbit-svg');
+        if(!svg) return;
+        const cs = getComputedStyle(document.documentElement);
+        const ringCol = cs.getPropertyValue('--c-rule').trim() || '#999';
+        let inner = '';
+        STARS.forEach(p => {
+            const dx = p.x-260, dy = p.y-260, d = Math.sqrt(dx*dx+dy*dy);
+            if(d < 70 || d > 250) return;
+            if(Math.abs(d-95) < 5 || Math.abs(d-160) < 5 || Math.abs(d-225) < 5) return;
+            inner += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${p.r.toFixed(2)}" fill="${ringCol}" opacity="${(p.o*0.7).toFixed(2)}"/>`;
+        });
+        inner += `<circle cx="260" cy="260" r="95"  fill="none" stroke="${ringCol}" stroke-width="1" opacity=".5"/>`;
+        inner += `<circle cx="260" cy="260" r="160" fill="none" stroke="${ringCol}" stroke-width="1" opacity=".42"/>`;
+        inner += `<circle cx="260" cy="260" r="225" fill="none" stroke="${ringCol}" stroke-width="1" opacity=".32"/>`;
+        svg.innerHTML = inner;
+    }
+
+    function buildMoons(){
+        const host = document.getElementById('orbit-container');
+        if(!host) return;
+        host.innerHTML = '';
+        orbits.forEach(o => {
             const ring = document.createElement('div');
-            ring.className = 'absolute inset-0';
-            const dir = orbit.reverse ? 'reverse' : '';
-            ring.style.animation = `spin ${orbit.speed}s linear infinite ${dir}`;
-
-            orbit.icons.forEach((icon, i) => {
-                const deg = (360 / orbit.icons.length) * i;
-                const pos = document.createElement('div');
-                pos.className = 'absolute top-1/2 left-1/2';
-                pos.style.transform = `translate(-50%,-50%) rotate(${deg}deg) translateY(-${orbit.radius}px)`;
-
-                const counterSpin = document.createElement('div');
-                counterSpin.className = 'w-10 h-10 flex items-center justify-center';
-                counterSpin.style.animation = `counter-spin ${orbit.speed}s linear infinite ${dir}`;
-
+            ring.className = 'solar-ring' + (o.reverse ? ' solar-ring--rev' : '');
+            ring.style.setProperty('--dur', o.dur + 's');
+            o.icons.forEach((icon, i) => {
+                const deg = (360 / o.icons.length) * i;
+                const moon = document.createElement('div');
+                moon.className = 'solar-moon';
+                moon.dataset.angle = deg;
+                moon.dataset.radius = o.radius;
+                const cnt = document.createElement('div');
+                cnt.className = 'solar-moon__counter';
+                cnt.style.setProperty('--dur', o.dur + 's');
                 let el;
-                if (icon.custom && customSVG[icon.custom]) {
+                if(icon.custom && customSVG[icon.custom]){
                     el = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
                     el.setAttribute('viewBox', '0 0 24 24');
-                    el.setAttribute('fill', icon.color);
+                    el.setAttribute('fill', icon.color || 'currentColor');
                     el.setAttribute('aria-hidden', 'true');
-                    el.classList.add('w-8', 'h-8');
                     el.innerHTML = customSVG[icon.custom];
                 } else {
                     el = document.createElement('i');
-                    el.className = `si si-${icon.slug} text-4xl`;
-                    el.style.color = icon.color;
+                    el.className = 'si si-' + icon.slug;
+                    el.style.color = icon.color || 'var(--c-ink)';
                     el.setAttribute('aria-hidden', 'true');
                 }
-
-                counterSpin.appendChild(el);
-                pos.appendChild(counterSpin);
-                ring.appendChild(pos);
+                cnt.appendChild(el);
+                moon.appendChild(cnt);
+                ring.appendChild(moon);
             });
-
-            container.appendChild(ring);
+            host.appendChild(ring);
         });
     }
 
-    buildOrbits();
+    function scaleMoons(){
+        const host = document.getElementById('orbit-container');
+        if(!host) return;
+        const w = host.getBoundingClientRect().width;
+        const factor = w / 520;
+        host.querySelectorAll('.solar-moon').forEach(m => {
+            const r = Number(m.dataset.radius);
+            const a = Number(m.dataset.angle);
+            m.style.transform = `rotate(${a}deg) translateY(-${(r*factor).toFixed(1)}px)`;
+        });
+    }
+
+    paintRings();
+    buildMoons();
+    scaleMoons();
+    window.addEventListener('resize', scaleMoons);
+    // sync theme-toggle icon state now that paintRings is safe to call
+    applyTheme(document.documentElement.getAttribute('data-theme') || 'dark');
 </script>
 </body></html>
