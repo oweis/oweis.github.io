@@ -4,26 +4,56 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta name="robots" content="noindex"/>
 <meta name="theme-color" content="#0b1326"/>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%230b1326'/><circle cx='50' cy='50' r='24' fill='none' stroke='%23c3f5ff' stroke-width='6'/></svg>"/>
+<link rel="icon" type="image/svg+xml" href="/assets/logo/nested-o.svg"/>
+<link rel="apple-touch-icon" href="/assets/logo/nested-o.svg"/>
 <title>404 — Oweis Yahya</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
-<script>
-tailwind.config = {
-  darkMode: "class",
-  theme: { extend: {
-    colors: { "surface": "#0b1326", "on-surface": "#dae2fd", "primary": "#c3f5ff", "on-primary": "#00363d", "primary-container": "#00e5ff", "outline-variant": "#3b494c", "surface-container": "#171f33" },
-    fontFamily: { "headline": ["Inter"], "label": ["Space Grotesk"] },
-  }}
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;800&amp;family=Instrument+Serif:ital@0;1&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{--surface:#0b1326;--on-surface:#dae2fd;--on-surface-variant:#bac9cc;--primary:#c3f5ff;--primary-container:#00e5ff;--on-primary:#00363d;--outline:#3b494c}
+  *,:before,:after{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--surface);color:var(--on-surface);font-family:"Geist",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{min-height:100dvh;display:flex;align-items:center;justify-content:center;
+    background-image:radial-gradient(900px 500px at 80% 0%,rgba(0,229,255,.06),transparent 60%),
+                     radial-gradient(circle at 2px 2px,rgba(59,73,76,.08) 1px,transparent 0);
+    background-size:auto,40px 40px}
+  .wrap{padding:2rem;max-width:42rem;text-align:left}
+  .meta{display:inline-flex;align-items:center;gap:.55rem;padding:.4rem .85rem;border:1px solid rgba(0,229,255,.25);
+    border-radius:9999px;background:rgba(0,229,255,.04);font-family:"Space Grotesk",sans-serif;font-size:.7rem;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--on-surface-variant);font-variant-numeric:tabular-nums;margin-bottom:1.75rem}
+  .meta::before{content:"";width:.4rem;height:.4rem;border-radius:9999px;background:#ff6b6b;box-shadow:0 0 12px rgba(255,107,107,.55)}
+  h1{font-family:"Geist",sans-serif;font-weight:800;font-size:clamp(5rem,16vw,9rem);line-height:.92;letter-spacing:-.05em;
+    color:var(--primary-container);margin:0 0 1rem;font-variant-numeric:tabular-nums}
+  h1 .slash{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;color:var(--primary);font-size:.55em;
+    margin:0 .15em;vertical-align:.18em}
+  p.lead{font-size:1.25rem;line-height:1.55;color:var(--on-surface);margin:0 0 .5rem;text-wrap:balance}
+  p.lead em{font-family:"Instrument Serif",serif;font-style:italic;color:var(--primary);font-weight:400}
+  p.path{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.85rem;color:var(--on-surface-variant);
+    margin:0 0 2.5rem;word-break:break-all}
+  .row{display:flex;gap:.75rem;flex-wrap:wrap}
+  .btn-solid,.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-family:"Space Grotesk",sans-serif;
+    font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.75rem;padding:.95rem 1.75rem;
+    border-radius:.5rem;text-decoration:none;transition:transform 200ms ease,filter 200ms ease,background-color 200ms ease,border-color 200ms ease}
+  .btn-solid{background:var(--primary-container);color:var(--on-primary);box-shadow:0 6px 22px -10px rgba(0,229,255,.55)}
+  .btn-solid:hover{filter:brightness(1.08)}
+  .btn-solid:active{transform:translateY(1px) scale(.985)}
+  .btn-ghost{border:1px solid rgba(195,245,255,.25);color:var(--primary)}
+  .btn-ghost:hover{border-color:rgba(195,245,255,.55);background:rgba(195,245,255,.04)}
+  .btn-ghost:active{transform:translateY(1px) scale(.985)}
+  a:focus-visible{outline:2px solid var(--primary-container);outline-offset:3px}
+</style>
 </head>
-<body class="bg-surface text-on-surface min-h-screen flex items-center justify-center">
-<div class="text-center px-8">
-<h1 class="font-headline font-extrabold text-8xl md:text-9xl tracking-tighter text-primary mb-4">404</h1>
-<p class="font-headline text-xl text-on-surface/70 mb-10">This page doesn't exist.</p>
-<a href="/" class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-label font-bold px-8 py-4 rounded-sm uppercase text-sm tracking-widest hover:brightness-110 active:scale-95 transition-all">
-Go Home
-</a>
+<body>
+<main class="wrap">
+<span class="meta">Status · 404 not found</span>
+<h1>4<span class="slash">/</span>04</h1>
+<p class="lead">This page <em>doesn't exist</em> — or it moved while you weren't looking.</p>
+<p class="path" id="path"></p>
+<div class="row">
+<a class="btn-solid" href="/">Back to home</a>
+<a class="btn-ghost" href="/#contact">Email me instead</a>
 </div>
+</main>
+<script>document.getElementById('path').textContent='~' + (location.pathname || '/');</script>
 </body></html>

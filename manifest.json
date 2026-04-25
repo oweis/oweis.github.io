@@ -7,9 +7,10 @@
   "theme_color": "#0b1326",
   "icons": [
     {
-      "src": "/assets/images/og-image.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/assets/logo/nested-o.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
 }
