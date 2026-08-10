@@ -2,7 +2,7 @@
 
 My personal portfolio.
 
-![Portfolio Screenshot](assets/images/og-image.png)
+![Portfolio Screenshot](assets/images/og-image.jpg)
 
 ## Stack
 
