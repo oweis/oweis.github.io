@@ -6,7 +6,7 @@ My personal portfolio.
 
 ## Stack
 
-- HTML, Tailwind CSS, vanilla JS
+- Hand-written HTML, CSS and vanilla JS. Design language in [DESIGN.md](DESIGN.md).
 - Hosted on GitHub Pages with custom domain
 
 ## Live
