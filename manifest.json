@@ -3,8 +3,8 @@
   "short_name": "Oweis",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#13110e",
-  "theme_color": "#13110e",
+  "background_color": "#f5f5f5",
+  "theme_color": "#f5f5f5",
   "icons": [
     {
       "src": "/assets/logo/icon-192.png",
